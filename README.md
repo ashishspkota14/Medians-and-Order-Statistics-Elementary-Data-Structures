@@ -1,7 +1,10 @@
 # Assignment 6: Medians and Order Statistics & Elementary Data Structures
 
-**Course:** CS Master's Program — University of the Cumberlands  
-**Author:** Aashish
+**Author:** Aashish Sapkota  
+**Professor:** Michael Solomon  
+**Course:** Algorithms and Data Structures (MSCS-532-M80)  
+**University of the Cumberlands**  
+**Date:** March 14, 2026
 
 ---
 
@@ -30,8 +33,20 @@ This repository contains implementations and analysis for two core algorithmic t
 ## How to Run
 
 ### Prerequisites
+
 - Python 3.8+
-- `matplotlib` (for chart generation): `pip install matplotlib`
+- `matplotlib` (for chart generation only)
+
+### Setup
+
+```bash
+# Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install matplotlib
+```
 
 ### Part 1: Selection Algorithms
 
@@ -56,27 +71,29 @@ python data_structures.py
 
 ### Part 1: Selection Algorithms
 
-| Algorithm | Worst-Case Time | Expected Time | Space |
-|-----------|----------------|---------------|-------|
-| Median of Medians | O(n) | O(n) | O(n) |
-| Randomized Quickselect | O(n²) | O(n) | O(n) |
+| Algorithm              | Best Case | Expected | Worst Case | Space |
+| ---------------------- | --------- | -------- | ---------- | ----- |
+| Median of Medians      | O(n)      | O(n)     | O(n)       | O(n)  |
+| Randomized Quickselect | O(n)      | O(n)     | O(n²)      | O(n)  |
 
 **Key observations from empirical analysis:**
-- Randomized Quickselect is consistently **1.5–2.5x faster** than Median of Medians in practice due to lower constant factors.
-- Both algorithms scale linearly with input size across all tested distributions.
-- The three-way partition handles duplicate elements efficiently in both implementations.
-- Median of Medians pays a constant-factor overhead for its worst-case guarantee, which is rarely needed in practice.
+
+- Randomized Quickselect is consistently **1.5–3x faster** than Median of Medians in practice due to lower constant factors.
+- Both algorithms scale linearly with input size across all tested distributions (random, sorted, reverse-sorted, many duplicates).
+- Three-way partitioning handles duplicate elements efficiently in both implementations.
+- No pathological O(n²) behavior was observed for Randomized Quickselect across any distribution.
 
 ### Part 2: Data Structures
 
-| Data Structure | Access | Insert (head/end) | Delete | Search |
-|---------------|--------|-------------------|--------|--------|
-| Dynamic Array | O(1) | O(n) / O(1)* | O(n) | O(n) |
-| Stack | O(1) top | O(1)* push | O(1) pop | O(n) |
-| Queue (circular) | O(1) front | O(1)* enqueue | O(1) dequeue | O(n) |
-| Singly Linked List | O(n) | O(1) / O(n) | O(n) | O(n) |
+| Data Structure     | Access     | Insert (head/end) | Delete       | Search |
+| ------------------ | ---------- | ----------------- | ------------ | ------ |
+| Dynamic Array      | O(1)       | O(n) / O(1)\*     | O(n)         | O(n)   |
+| Stack              | O(1) top   | O(1)\* push       | O(1) pop     | O(n)   |
+| Queue (circular)   | O(1) front | O(1)\* enqueue    | O(1) dequeue | O(n)   |
+| Singly Linked List | O(n)       | O(1) / O(n)       | O(n)         | O(n)   |
+| Rooted Tree        | O(n)       | O(1) child        | O(n)         | O(n)   |
 
-*Amortized
+\*Amortized
 
 ---
 
